@@ -1,11 +1,34 @@
-import Button from "../Button/Button";
+import { useState } from "react"
 
-import { CounterProps } from "./types";
-import { CounterWrapper, ButtonControl, Count } from "./styles";
+import Button from "components/Button/Button"
 
-function Counter({ count, onMinus, onPlus }: CounterProps) {
+// import { CounterProps } from "./types"
+import { CounterWrapper, ButtonControl, Count } from "./styles"
+//react component - Counter
+function Counter() { //удалил пропсы с типизацией 
+  const [count, setCount] = useState<number>(0)
+
+  const onPlus = () => {
+    setCount(prevValue => prevValue + 1)
+  }
+
+  const onMinus = () => {
+    setCount(prevValue => prevValue - 1)
+  }
+
+  const onMultiply = () => {
+    setCount(prevValue => Number((prevValue * 2).toFixed(2)))
+  }
+
+  const onDivide = () => {
+    setCount(prevValue => Number((prevValue / 2).toFixed(2)))
+  }
+//react element ButtonControl
   return (
     <CounterWrapper>
+      <ButtonControl>
+        <Button name="/" onClick={onDivide} />
+      </ButtonControl>
       <ButtonControl>
         <Button name="-" onClick={onMinus} />
       </ButtonControl>
@@ -13,8 +36,11 @@ function Counter({ count, onMinus, onPlus }: CounterProps) {
       <ButtonControl>
         <Button name="+" onClick={onPlus} />
       </ButtonControl>
+      <ButtonControl>
+        <Button name="*" onClick={onMultiply} />
+      </ButtonControl>
     </CounterWrapper>
-  );
+  )
 }
 
-export default Counter;
+export default Counter
