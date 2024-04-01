@@ -6,7 +6,7 @@ export const CounterWrapper = styled.div`
   align-items: center;
   justify-content: center;
   gap: 15px;
-  width: 400px;
+  max-width: 900px;
   height: fit-content;
   border: 1px solid white;
   border-radius: 10px;
@@ -16,7 +16,7 @@ export const CounterWrapper = styled.div`
 `;
 
 export const ButtonControl = styled.div`
-  width: 80px;
+  min-width: 80px;
 `;
 
 export const Count = styled.p`
